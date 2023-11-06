@@ -36,5 +36,9 @@ public class PacienteService implements IPacienteService{
    public void editPaciente(Long id, Paciente p) { //tengo el id como parametro pero no lo utilizo?
       this.savePaciente(p);
    }
-   
+
+   @Override
+   public Paciente findPacienteByDni(String dni) {
+      return pacienteRepository.findByDni(dni);
+   }
 }

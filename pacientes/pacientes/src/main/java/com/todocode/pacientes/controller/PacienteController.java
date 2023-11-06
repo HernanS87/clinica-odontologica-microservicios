@@ -57,9 +57,13 @@ public class PacienteController {
    }
 
   //5- obtener un paciente en particular 
-    @GetMapping ("/pacientes/traer/{id}")
+   @GetMapping ("/pacientes/traer/{id}")
    public Paciente traerPaciente (@PathVariable Long id) {
-       return pacienteService.findPaciente(id);
+      return pacienteService.findPaciente(id);
    }
    
+   @GetMapping ("/pacientes/traerdni/{dni}")
+   public Paciente traerPacienteDni (@PathVariable String dni) {
+      return pacienteService.findPacienteByDni(dni);
+   }
 }
