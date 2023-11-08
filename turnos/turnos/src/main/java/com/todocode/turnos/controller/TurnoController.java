@@ -1,5 +1,6 @@
 package com.todocode.turnos.controller;
 
+import com.todocode.turnos.dto.TurnoDTO;
 import com.todocode.turnos.model.Turno;
 import com.todocode.turnos.service.ITurnoService;
 import java.time.LocalDate;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,11 +24,8 @@ public class TurnoController {
    
    //1- crear un nuevo turno
    @PostMapping ("/crear")
-   public String crearTurno ( @RequestParam LocalDate fecha,
-                              @RequestParam String tratamiento,
-                              @RequestParam String dniPaciente
-                              ) {
-      turnoService.saveTurno(fecha, tratamiento, dniPaciente);
+   public String crearTurno (@RequestBody TurnoDTO turno) {
+      turnoService.saveTurno( turno.getFecha(), turno.getTratamiento(), turno.getDniPaciente());
 
       return "Turno creado correctamente";
    }
